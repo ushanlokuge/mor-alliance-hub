@@ -1,77 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#090b12">
-  <meta name="description" content="MOR — Mortis Imperium alliance hub: alliance information, Mythic Trails, Bear Hunt and Kingshot optimisation tools.">
-  <title>MOR | Mortis Imperium — Alliance Hub</title>
-  <style>
-    :root{--bg:#080a10;--panel:#111722;--panel2:#171d29;--gold:#d9ad55;--gold2:#f5d58b;--muted:#aeb7c5;--line:rgba(217,173,85,.35);--white:#f7f4ed}
-    *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{margin:0;background:radial-gradient(ellipse at 50% -10%,#263044 0,#101521 38%,var(--bg) 78%);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
-    a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 36px));margin:auto}
-    header{padding:34px 0 26px;text-align:center;border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(0,0,0,.2),transparent)}
-    .emblem{width:150px;height:150px;object-fit:cover;border-radius:50%;border:2px solid var(--gold);box-shadow:0 0 35px rgba(217,173,85,.2)}
-    .eyebrow{margin:18px 0 2px;color:var(--gold2);font-size:.78rem;letter-spacing:.32em;text-transform:uppercase}
-    h1{font-family:Georgia,serif;font-size:clamp(2.2rem,6vw,4.2rem);letter-spacing:.08em;line-height:1.05;margin:8px 0;color:var(--gold2);text-shadow:0 3px 20px #000}
-    .subtitle{margin:10px auto 0;color:#d4d8df;letter-spacing:.2em;text-transform:uppercase;font-size:.82rem}
-    .motto{margin:18px 0 0;color:var(--gold);font-family:Georgia,serif;font-style:italic;font-size:1.1rem}
-    main{padding:34px 0 60px}.intro{max-width:760px;text-align:center;margin:0 auto 36px;color:#c4cad4}.intro strong{color:var(--gold2)}
-    .section-head{display:flex;align-items:center;gap:14px;margin:38px 0 16px}.section-head:after{content:"";height:1px;background:linear-gradient(90deg,var(--line),transparent);flex:1}.section-head h2{font-family:Georgia,serif;color:var(--gold2);font-size:1.25rem;letter-spacing:.12em;text-transform:uppercase;margin:0}
-    .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-    .card{display:flex;gap:16px;align-items:flex-start;padding:20px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,rgba(28,37,52,.96),rgba(13,18,27,.98));box-shadow:0 12px 28px rgba(0,0,0,.2);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;min-height:136px}
-    .card:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 16px 34px rgba(0,0,0,.35),0 0 20px rgba(217,173,85,.08)}
-    .icon{flex:0 0 46px;width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:rgba(217,173,85,.12);border:1px solid rgba(217,173,85,.35);color:var(--gold2);font-size:1.35rem}
-    .card h3{margin:0 0 5px;font-size:1.05rem;color:#fff}.card p{margin:0 0 12px;color:var(--muted);font-size:.9rem}.visit{display:inline-flex;align-items:center;gap:7px;color:var(--gold2);font-weight:700;font-size:.84rem;letter-spacing:.04em}.visit span{transition:transform .18s}.card:hover .visit span{transform:translateX(4px)}
-    .playbook{margin-top:46px;padding:22px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,rgba(25,32,45,.95),rgba(9,12,18,.98));text-align:center}.playbook h2{font-family:Georgia,serif;color:var(--gold2);letter-spacing:.12em;text-transform:uppercase;margin:0 0 8px}.playbook p{color:var(--muted);margin:0 auto 18px;max-width:650px}.poster{display:block;width:min(720px,100%);height:auto;margin:0 auto;border:1px solid var(--gold);border-radius:8px;box-shadow:0 15px 40px rgba(0,0,0,.45)}
-    footer{text-align:center;padding:24px 0 36px;border-top:1px solid var(--line);color:#9ca6b5;font-size:.82rem}.footer-brand{color:var(--gold2);letter-spacing:.2em;font-family:Georgia,serif;font-size:1rem;margin-bottom:6px}
-    @media(max-width:700px){.cards{grid-template-columns:1fr}.card{min-height:unset}.emblem{width:124px;height:124px}.wrap{width:min(100% - 24px,1120px)}.playbook{padding:14px}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090b12">
+<meta name="description" content="MOR — Mortis Imperium alliance playbook and useful Kingshot tools.">
+<title>MOR | Mortis Imperium — Alliance Headquarters</title>
+<style>
+:root{--bg:#090c14;--panel:#151c29;--panel2:#1b2433;--gold:#d9ad55;--gold2:#f5d58b;--ink:#f7f4ed;--muted:#bdc6d3;--line:rgba(217,173,85,.38);--blue:#172d55;--green:#17432e;--red:#5c1c26;--purple:#352052}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:radial-gradient(ellipse at 50% -15%,#29354b 0,#111827 36%,var(--bg) 78%);color:var(--ink);font:16px/1.55 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}.wrap{width:min(1180px,calc(100% - 36px));margin:auto}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(8,11,18,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;font-family:Georgia,serif;color:var(--gold2);font-weight:bold;letter-spacing:.12em}
+.brand img{width:43px;height:43px;border-radius:50%;object-fit:cover;border:1px solid var(--gold)}
+.navlinks{display:flex;align-items:center;gap:8px}.navlink,.dropbutton{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border:1px solid transparent;border-radius:9px;background:transparent;color:#f7f4ed;font-family:inherit;font-size:.95rem;font-weight:600;cursor:pointer}
+.navlink:hover,.dropbutton:hover,.dropwrap:focus-within .dropbutton{border-color:var(--line);background:#171f2d;color:var(--gold2)}
+.dropwrap{position:relative}.caret{font-size:.75rem;color:var(--gold2)}
+.dropdown{display:none;position:absolute;right:0;top:calc(100% + 10px);width:min(760px,calc(100vw - 28px));padding:18px;background:rgba(13,18,28,.98);border:1px solid var(--line);border-radius:15px;box-shadow:0 22px 60px #000b;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.dropwrap:hover .dropdown,.dropwrap:focus-within .dropdown,.dropwrap.open .dropdown{display:grid}
+.dropdown:before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.dropcard{display:flex;gap:12px;padding:14px;border:1px solid rgba(217,173,85,.28);border-radius:11px;background:linear-gradient(145deg,#1a2433,#101722);transition:.18s}
+.dropcard:hover{transform:translateY(-2px);border-color:var(--gold);background:#202b3c}
+.ico{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border:1px solid var(--line);border-radius:11px;background:#d9ad5518;font-size:1.25rem}
+.dropcard b{display:block;color:#fff;font-size:.94rem}.dropcard small{display:block;color:var(--muted);line-height:1.4;margin-top:3px}
+.hero{padding:54px 0 34px;text-align:center;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0b101b66,transparent)}
+.hero img{width:clamp(110px,16vw,165px);height:clamp(110px,16vw,165px);object-fit:cover;border-radius:50%;border:2px solid var(--gold);box-shadow:0 0 42px #d9ad5526}
+.eyebrow{margin:14px 0 0;color:var(--gold2);font-size:.76rem;letter-spacing:.3em;text-transform:uppercase}
+h1{font:clamp(2.5rem,7vw,5rem)/1 Georgia,serif;letter-spacing:.1em;color:var(--gold2);margin:8px 0 0;text-shadow:0 4px 24px #000}
+.hero-sub{margin:8px 0 0;text-transform:uppercase;letter-spacing:.25em;color:#d8dce4;font:clamp(.85rem,2vw,1.15rem) Georgia,serif}
+.hero-motto{font:italic 1.12rem Georgia,serif;color:var(--gold);margin:17px 0 0}
+.hero-line{margin:20px auto 0;color:#cbd2dd;letter-spacing:.19em;text-transform:uppercase;font-size:.73rem}
+main{padding:28px 0 60px}
+.mission{display:grid;grid-template-columns:210px 1fr auto;gap:22px;align-items:center;padding:22px 24px;border:1px solid var(--gold);border-radius:14px;background:linear-gradient(110deg,#111c2b,#0c111b);box-shadow:0 12px 32px #0005}
+.mission h2{font:700 1.45rem Georgia,serif;color:var(--gold2);margin:0}.mission p{margin:0;color:#e0e4ea}.mission strong{display:block;font-size:1.15rem;color:white;margin-bottom:4px}
+.ribbon{max-width:205px;padding:12px 15px;background:linear-gradient(135deg,#a87922,#f5d58b);color:#17130b;text-align:center;font-weight:900;line-height:1.2;transform:skew(-7deg);border:1px solid #ffe3a0}
+.section{margin-top:24px}.section-title{display:flex;align-items:center;gap:14px;margin:0 0 13px;color:var(--gold2);font:700 1.3rem Georgia,serif;letter-spacing:.1em;text-transform:uppercase}
+.section-title:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--line),transparent)}
+.principles{display:grid;grid-template-columns:repeat(5,1fr);padding:20px 10px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(135deg,#f4f5f7,#dce3ec);color:#101b35}
+.principle{text-align:center;padding:4px 12px;border-right:1px solid #b9c3d1}.principle:last-child{border:0}.principle .picon{font-size:1.8rem}.principle b{display:block;font-size:.9rem;margin:4px 0 2px}.principle span{font-size:.82rem;line-height:1.3;display:block}
+.columns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;align-items:stretch}
+.panel{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:linear-gradient(145deg,#1b2535,#101722);box-shadow:0 12px 28px #0003}
+.panelhead{padding:13px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #ffffff22}
+.panelhead .bigicon{font-size:1.8rem}.panelhead h3{font:700 1.17rem Georgia,serif;margin:0;color:#fff}.panelhead small{display:block;font-size:.67rem;letter-spacing:.12em;color:#e4e8ef}
+.red .panelhead{background:linear-gradient(100deg,#6c202b,#32141d)}.blue .panelhead{background:linear-gradient(100deg,#234a86,#142744)}.green .panelhead{background:linear-gradient(100deg,#21613f,#153b2b)}.purple .panelhead{background:linear-gradient(100deg,#553478,#2a1b42)}.brown .panelhead{background:linear-gradient(100deg,#775022,#382514)}.slate .panelhead{background:linear-gradient(100deg,#4b5666,#222b38)}
+.panelbody{padding:16px}.checklist{list-style:none;padding:0;margin:0}.checklist li{position:relative;padding:0 0 9px 23px;font-size:.87rem;line-height:1.35}.checklist li:before{content:"✓";position:absolute;left:0;top:0;width:15px;height:15px;border-radius:3px;background:#e8d39a;color:#172033;font-size:.72rem;font-weight:900;text-align:center;line-height:15px}
+.quote{margin:12px 0;padding:14px;border-radius:8px;background:#080d17a8;border:1px solid #ffffff20;text-align:center;font:italic 1rem Georgia,serif;color:#fff}
+.note{font-size:.82rem;color:var(--muted);margin:10px 0 0}.callout{margin-top:12px;padding:12px;border-radius:8px;background:#5b1c25;border:1px solid #c57b58;color:#fff;font-size:.82rem}.callout b{display:block;color:#ffe28e;margin-bottom:4px}
+.channel{display:grid;grid-template-columns:42px 1fr;gap:10px;margin:0 0 13px}.channel .ico{background:#261d40}.channel b{display:block;font-size:.88rem}.channel p{margin:2px 0 0;color:var(--muted);font-size:.8rem;line-height:1.35}
+.event-questions{margin-top:12px;padding:13px;border-radius:9px;background:#21180e;border:1px solid #8e642b}.event-questions b{display:block;text-align:center;color:var(--gold2);font-size:.8rem;letter-spacing:.08em;margin-bottom:6px}
+.disputes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.steps{counter-reset:step;list-style:none;margin:0;padding:0}.steps li{counter-increment:step;padding:7px 0 7px 42px;position:relative;font-size:.88rem}.steps li:before{content:counter(step);position:absolute;left:0;top:3px;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:#202b3b;border:1px solid var(--gold);font-weight:800}
+.bullets{padding-left:18px;margin:10px 0 0;font-size:.82rem}.bullets li{padding:2px 0}
+.codebox{margin-top:24px;padding:18px;border:1px solid var(--gold);border-radius:14px;background:linear-gradient(145deg,#111b2a,#080d16)}
+.codebox h2{text-align:center;margin:0 0 13px;font:700 1.65rem Georgia,serif;color:var(--gold2);letter-spacing:.12em}
+.codegrid{display:grid;grid-template-columns:repeat(10,1fr);border:1px solid var(--gold);border-radius:9px;overflow:hidden}
+.codeitem{text-align:center;padding:10px 5px;border-right:1px solid #ffffff24;font-size:.73rem;line-height:1.3}.codeitem:last-child{border:0}.num{display:grid;place-items:center;width:27px;height:27px;margin:0 auto 7px;border-radius:6px;background:linear-gradient(135deg,#a97720,#ffe39a);color:#17120a;font-weight:900;font-size:.95rem}
+.footerline{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-top:20px;color:var(--gold2);font:italic 1rem Georgia,serif}.footerline strong{font:1.1rem Georgia,serif;letter-spacing:.15em;font-style:normal}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;text-align:center;color:#9ca6b5;font-size:.8rem}
+@media(max-width:900px){.columns{grid-template-columns:1fr 1fr}.mission{grid-template-columns:1fr}.ribbon{max-width:none}.codegrid{grid-template-columns:repeat(5,1fr)}.codeitem:nth-child(5){border-right:0}.codeitem:nth-child(n+6){border-top:1px solid #ffffff24}}
+@media(max-width:650px){.wrap{width:calc(100% - 24px)}.nav{min-height:62px}.brand{font-size:.83rem}.brand img{width:36px;height:36px}.navlink,.dropbutton{padding:9px 10px;font-size:.85rem}.dropdown{right:-4px;grid-template-columns:1fr;width:min(390px,calc(100vw - 24px));max-height:75vh;overflow:auto}.hero{padding:36px 0 26px}.mission{padding:17px}.principles{grid-template-columns:1fr 1fr;gap:12px}.principle{border:0;border-bottom:1px solid #b9c3d1;padding:9px}.principle:last-child{grid-column:1/-1;border:0}.columns,.disputes{grid-template-columns:1fr}.codegrid{grid-template-columns:repeat(2,1fr)}.codeitem{border-top:1px solid #ffffff24}.codeitem:nth-child(odd){border-right:1px solid #ffffff24}.codeitem:nth-child(even){border-right:0}.footerline{flex-direction:column;text-align:center}}
+</style>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <img class="emblem" src="assets/mor-emblem.jpg" alt="MOR Mortis Imperium dragon and reaper emblem">
-      <p class="eyebrow">Kingdom 865 · Alliance Headquarters</p>
-      <h1>MOR</h1>
-      <div class="subtitle">Mortis Imperium</div>
-      <p class="motto">Different Players. Same Purpose.</p>
+<nav class="topbar">
+ <div class="wrap nav">
+  <a class="brand" href="#home"><img src="assets/mor-emblem.jpg" alt="MOR emblem"><span>MOR · MORTIS IMPERIUM</span></a>
+  <div class="navlinks">
+   <a class="navlink" href="#home">HOME</a>
+   <div class="dropwrap" id="usefulMenu">
+    <button class="dropbutton" type="button" aria-expanded="false" aria-haspopup="true">USEFUL INFORMATION <span class="caret">▾</span></button>
+    <div class="dropdown" aria-label="Useful information links">
+     <a class="dropcard" href="https://frakinator.streamlit.app/" target="_blank" rel="noopener"><span class="ico">🐻</span><span><b>Mythic Trails &amp; Bear Hunt Optimisation</b><small>Open the Frakinator tool for Bear Hunt planning and optimisation.</small></span></a>
+     <a class="dropcard" href="https://stratforge.tools/" target="_blank" rel="noopener"><span class="ico">⚔️</span><span><b>MOR Alliance Information</b><small>Alliance resources, strategy information and shared planning tools.</small></span></a>
+     <a class="dropcard" href="https://kingshotoptimizer.com/hero-gear/" target="_blank" rel="noopener"><span class="ico">🛡️</span><span><b>Hero Gear</b><small>Review and optimise your hero equipment.</small></span></a>
+     <a class="dropcard" href="https://kingshotoptimizer.com/governor-gear/" target="_blank" rel="noopener"><span class="ico">👑</span><span><b>Governor Gear</b><small>Plan and improve your Governor equipment.</small></span></a>
+     <a class="dropcard" href="https://kingshotoptimizer.com/charms/" target="_blank" rel="noopener"><span class="ico">💎</span><span><b>Charms</b><small>Check charm progression and upgrade priorities.</small></span></a>
+     <a class="dropcard" href="https://kingshotoptimizer.com/heroes/browse/" target="_blank" rel="noopener"><span class="ico">🦸</span><span><b>Hero Database</b><small>Browse heroes, skills and available information.</small></span></a>
+     <a class="dropcard" href="https://kingshotoptimizer.com/masters/" target="_blank" rel="noopener"><span class="ico">📜</span><span><b>Masters</b><small>Explore Masters information and optimisation resources.</small></span></a>
     </div>
-  </header>
-  <main class="wrap">
-    <p class="intro"><strong>Welcome to the MOR Alliance Hub.</strong><br>One place for alliance information, battle preparation and the tools we use to improve. Power wins battles. Unity wins wars.</p>
+   </div>
+  </div>
+ </div>
+</nav>
 
-    <div class="section-head"><h2>Mythic Trails &amp; Bear Hunt</h2></div>
-    <div class="cards">
-      <a class="card" href="https://frakinator.streamlit.app/" target="_blank" rel="noopener noreferrer">
-        <div class="icon">🐻</div><div><h3>Mythic Trails &amp; Bear Hunt Optimisation</h3><p>Open the Frakinator tool for Bear Hunt planning and optimisation.</p><span class="visit">Open tool <span>→</span></span></div>
-      </a>
-    </div>
+<header class="hero" id="home">
+ <div class="wrap">
+  <img src="assets/mor-emblem.jpg" alt="MOR Mortis Imperium dragon and reaper emblem">
+  <p class="eyebrow">Kingdom 865 · Alliance Headquarters</p>
+  <h1>MOR</h1><div class="hero-sub">Mortis Imperium</div>
+  <p class="hero-motto">Different Players. Same Purpose.</p>
+  <div class="hero-line">PEOPLE · STRATEGY · ACTION · VICTORY · TOGETHER</div>
+ </div>
+</header>
 
-    <div class="section-head"><h2>Alliance Information</h2></div>
-    <div class="cards">
-      <a class="card" href="https://stratforge.tools/" target="_blank" rel="noopener noreferrer">
-        <div class="icon">⚔️</div><div><h3>MOR Alliance Information</h3><p>Alliance resources, strategy information and shared planning tools.</p><span class="visit">Visit StratForge <span>→</span></span></div>
-      </a>
-    </div>
+<main class="wrap">
+ <section class="mission">
+  <h2>✥ OUR MISSION</h2>
+  <p><strong>We compete, grow and win together.</strong>Our strength is not measured only by Power, but by how well we communicate, coordinate, adapt and stand together. Real life comes first. But when we commit to the Alliance, an event or each other, we should be able to count on one another.</p>
+  <div class="ribbon">POWER WINS BATTLES.<br>UNITY WINS WARS.</div>
+ </section>
 
-    <div class="section-head"><h2>Kingshot Optimisation</h2></div>
-    <div class="cards">
-      <a class="card" href="https://kingshotoptimizer.com/hero-gear/" target="_blank" rel="noopener noreferrer"><div class="icon">🛡️</div><div><h3>Hero Gear</h3><p>Review and optimise your hero equipment.</p><span class="visit">Open optimiser <span>→</span></span></div></a>
-      <a class="card" href="https://kingshotoptimizer.com/governor-gear/" target="_blank" rel="noopener noreferrer"><div class="icon">👑</div><div><h3>Governor Gear</h3><p>Plan and improve your Governor equipment.</p><span class="visit">Open optimiser <span>→</span></span></div></a>
-      <a class="card" href="https://kingshotoptimizer.com/charms/" target="_blank" rel="noopener noreferrer"><div class="icon">💎</div><div><h3>Charms</h3><p>Check charm progression and upgrade priorities.</p><span class="visit">Open optimiser <span>→</span></span></div></a>
-      <a class="card" href="https://kingshotoptimizer.com/heroes/browse/" target="_blank" rel="noopener noreferrer"><div class="icon">🦸</div><div><h3>Hero Database</h3><p>Browse heroes, skills and available information.</p><span class="visit">Browse heroes <span>→</span></span></div></a>
-      <a class="card" href="https://kingshotoptimizer.com/masters/" target="_blank" rel="noopener noreferrer"><div class="icon">📜</div><div><h3>Masters</h3><p>Explore Masters information and optimisation resources.</p><span class="visit">Explore Masters <span>→</span></span></div></a>
-    </div>
+ <section class="section">
+  <h2 class="section-title">Our Principles</h2>
+  <div class="principles">
+   <div class="principle"><div class="picon">♟</div><b>ALLIANCE FIRST</b><span>The team comes first.</span></div>
+   <div class="principle"><div class="picon">🤝</div><b>RESPECT</b><span>Every player matters.</span></div>
+   <div class="principle"><div class="picon">💬</div><b>COMMUNICATION</b><span>Clear. Quick. Accurate.</span></div>
+   <div class="principle"><div class="picon">🛡️</div><b>ACCOUNTABILITY</b><span>Rank means responsibility.</span></div>
+   <div class="principle"><div class="picon">💡</div><b>INITIATIVE</b><span>Ideas are welcome. We can disagree without dividing.</span></div>
+  </div>
+ </section>
 
-    <section class="playbook" id="playbook">
-      <h2>The MOR Alliance Playbook</h2>
-      <p>Our mission, principles, leadership responsibilities, communication standards, event procedures and the MOR Code.</p>
-      <a href="assets/mor-alliance-playbook.png" target="_blank" rel="noopener noreferrer" aria-label="Open the full MOR Alliance Playbook image"><img class="poster" src="assets/mor-alliance-playbook.png" alt="MOR Mortis Imperium Alliance Playbook"></a>
-      <p style="margin:14px 0 0"><a class="visit" href="assets/mor-alliance-playbook.png" target="_blank" rel="noopener noreferrer">View full-size playbook <span>↗</span></a></p>
-    </section>
-  </main>
-  <footer><div class="wrap"><div class="footer-brand">MOR — MORTIS IMPERIUM</div>People make the Alliance · Together we go further<br>Power wins battles. Unity wins wars.</div></footer>
-</body>
-</html>
+ <section class="section">
+  <div class="columns">
+   <article class="panel red"><div class="panelhead"><span class="bigicon">♛</span><div><h3>R5 | LEADERSHIP</h3><small>DIPLOMACY · ULTIMATE MATTER SOLVER</small></div></div><div class="panelbody">
+    <ul class="checklist"><li>Represent and protect MOR's interests within the Kingdom and with other Alliances.</li><li>Handle high-level diplomacy.</li><li>Support the R4 team when needed.</li><li>When an important issue cannot be resolved by the R4 team, the R5 makes the final call.</li></ul>
+    <div class="quote">“Final authority should be the last step, not the first.”</div><p class="note">Day-to-day Alliance leadership belongs to the R4 team.</p>
+   </div></article>
+   <article class="panel blue"><div class="panelhead"><span class="bigicon">🛡</span><div><h3>R4 | ALLIANCE COMMAND</h3><small>PLAN · ORGANISE · EXECUTE</small></div></div><div class="panelbody">
+    <ul class="checklist"><li>Run the Alliance and turn strategy into action.</li><li>Lead events, war preparation and execution.</li><li>Manage territory, recruitment and development.</li><li>Communicate with members.</li><li>Gather and share information.</li><li>Solve problems and support members.</li><li>Keep the Alliance organised and active.</li><li>Support the R5 on diplomacy when required.</li><li>Own specific areas (Events | War | Territory | Recruitment | Members | Communications).</li></ul>
+    <div class="quote"><b>R4 IS A JOB, NOT A REWARD.</b></div><p class="note">One team. Clear roles. Real impact.</p>
+   </div></article>
+   <article class="panel green"><div class="panelhead"><span class="bigicon">👥</span><div><h3>ALLIANCE MEMBERS</h3><small>RESPONSIBILITIES &amp; RIGHTS</small></div></div><div class="panelbody">
+    <b>YOU SHOULD:</b><ul class="checklist"><li>Be active and read Alliance messages.</li><li>Participate in events when possible.</li><li>Follow agreed strategy.</li><li>Respect Alliance agreements and rules.</li><li>Help teammates.</li><li>Communicate absences to an R4 in advance.</li><li>Avoid actions that put the Alliance at risk.</li></ul>
+    <div class="callout"><b>⚠ ACTIVITY &amp; ATTENDANCE</b>If you cannot attend Alliance activities, inform an R4 beforehand whenever possible. Unexplained inactivity or repeated failure to participate will result in progressive demotion. Three consecutive weeks without participation or communication may result in removal from the Alliance.<br><b>COMMUNICATION PROTECTS YOUR PLACE.</b></div>
+    <b style="display:block;margin-top:12px">YOU HAVE THE RIGHT TO:</b><ul class="checklist"><li>Be treated with respect.</li><li>Ask, suggest and disagree respectfully.</li><li>Receive important information.</li><li>Raise concerns with an R4 or R5.</li><li>Put real life before the game.</li></ul>
+   </div></article>
+  </div>
+ </section>
+
+ <section class="section">
+  <div class="columns">
+   <article class="panel purple"><div class="panelhead"><span class="bigicon">💬</span><div><h3>COMMUNICATION</h3><small>RIGHT INFORMATION. RIGHT PLACE.</small></div></div><div class="panelbody">
+    <div class="channel"><span class="ico">📢</span><div><b>Alliance Mail / Announcements</b><p>Important events, strategy, Kingdom rules, diplomacy and major decisions.</p></div></div>
+    <div class="channel"><span class="ico">💬</span><div><b>Alliance Chat</b><p>Everyday coordination, questions, help and quick information.</p></div></div>
+    <div class="channel"><span class="ico">👥</span><div><b>R4 Chat</b><p>Strategy, planning, sensitive matters and member management.</p></div></div>
+    <div class="channel"><span class="ico">⚔️</span><div><b>Event Chat</b><p>Rally coordination, targets, timing and real-time instructions.</p></div></div>
+    <div class="channel"><span class="ico">🛡️</span><div><b>Other Group Chats (as needed)</b><p>Specific topics (e.g. Bear Hunt, Castle, KvK, Recruitment, New Players). Keep it relevant.</p></div></div>
+    <p class="note"><b>Keep messages short, clear and actionable.</b></p>
+   </div></article>
+   <article class="panel brown"><div class="panelhead"><span class="bigicon">⚔️</span><div><h3>EVENTS &amp; WAR</h3><small>PREPARE · COORDINATE · EXECUTE · IMPROVE</small></div></div><div class="panelbody">
+    <ul class="checklist"><li>Clear objective, time and R4 commander.</li><li>Strategy and player instructions.</li><li>Follow current Alliance instructions (e.g. Bear Hunt rallies, heroes, formations).</li><li>For Castle, KvK and other major operations, follow the plan and your commander.</li><li>During the battle: execute the plan.</li><li>After the battle: question and improve the plan.</li></ul>
+    <div class="event-questions"><b>AFTER EVERY EVENT WE ASK:</b><ul class="checklist"><li>What worked?</li><li>What didn't?</li><li>What did we learn?</li><li>What changes next time?</li></ul></div>
+    <p class="note" style="text-align:center;font-style:italic;color:var(--gold2)">It's not about who screwed up. It's about how we get better.</p>
+   </div></article>
+   <article class="panel slate"><div class="panelhead"><span class="bigicon">⚖️</span><div><h3>DISAGREEMENTS &amp; PROBLEMS</h3><small>SOLVE IT TOGETHER.</small></div></div><div class="panelbody">
+    <ol class="steps"><li>Talk directly if appropriate.</li><li>Escalate to an R4.</li><li>Escalate to the R5 if needed.</li><li>R5 makes the final call.</li></ol>
+    <ul class="bullets"><li>Challenge the decision, not the person.</li><li>Keep personal issues private.</li><li>R4s disagreements should be resolved within leadership before communicating one position to the Alliance.</li><li>Correct privately. Praise publicly.</li><li>No retaliation for raising concerns in good faith.</li><li>Disagreement is normal. Drama is optional.</li></ul>
+   </div></article>
+  </div>
+ </section>
+
+ <section class="codebox">
+  <h2>THE MOR CODE</h2>
+  <div class="codegrid">
+   <div class="codeitem"><span class="num">1</span>Alliance<br>before ego.</div>
+   <div class="codeitem"><span class="num">2</span>R5 protects<br>the Alliance.</div>
+   <div class="codeitem"><span class="num">3</span>R4s run<br>the Alliance.</div>
+   <div class="codeitem"><span class="num">4</span>Rank means<br>responsibility.</div>
+   <div class="codeitem"><span class="num">5</span>Communicate<br>clearly.</div>
+   <div class="codeitem"><span class="num">6</span>Follow<br>event command.</div>
+   <div class="codeitem"><span class="num">7</span>Challenge<br>ideas, not people.</div>
+   <div class="codeitem"><span class="num">8</span>Learn from<br>mistakes.</div>
+   <div class="codeitem"><span class="num">9</span>Respect<br>every player.</div>
+   <div class="codeitem"><span class="num">10</span>Stay<br>united.</div>
+  </div>
+  <div class="footerline"><span>Different Players<br>Same Purpose</span><strong>MOR — MORTIS IMPERIUM</strong><span>More Than a Game</span></div>
+ </section>
+</main>
+<footer><div class="wrap">MOR · MORTIS IMPERIUM &nbsp;|&nbsp; PEOPLE MAKE THE ALLIANCE — TOGETHER WE GO FURTHER</div></footer>
+<script>
+const menu=document.getElementById('usefulMenu'),button=menu.querySelector('button');
+button.addEventListener('click',()=>{const open=menu.classList.toggle('open');button.setAttribute('aria-expanded',String(open));});
+document.addEventListener('click',e=>{if(!menu.contains(e.target)){menu.classList.remove('open');button.setAttribute('aria-expanded','false');}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){menu.classList.remove('open');button.setAttribute('aria-expanded','false');button.focus();}});
+</script>
+</body></html>
