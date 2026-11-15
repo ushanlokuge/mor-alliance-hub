@@ -17,11 +17,3 @@ A static GitHub Pages website. The home page is built as real HTML/CSS (not a po
 
 ## Language selector
 The navigation includes English, German, French, Spanish, Portuguese, Korean, Japanese, Chinese (Simplified), and Russian. Page translation is provided automatically by Google Translate. Visitors' language choice is saved in their browser. Machine translation can occasionally mistranslate game-specific terminology or alliance names.
-
-## Header and link behaviour
-The supplied MOR Alliance Playbook banner is displayed full-width at the top of the home page. Resource links open in the same browser tab.
-
-## Embedded resource layout
-The page layout is **Header → Menu → Body → Footer**. Selecting a Useful Information card loads its URL into the body iframe, with a Back to Home control. Some third-party sites may block iframe embedding through their security policy; for those sites, a direct same-tab fallback link is shown.
-
-The Useful Information cards load their selected site inside the page body using an iframe. Some third-party providers may block iframe embedding; in that case use the direct link displayed below the frame.
