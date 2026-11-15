@@ -29,10 +29,25 @@ font[ style ]{background:transparent!important;box-shadow:none!important}
 .dropdown{display:none;position:absolute;right:0;top:calc(100% + 10px);width:min(760px,calc(100vw - 28px));padding:18px;background:rgba(13,18,28,.98);border:1px solid var(--line);border-radius:15px;box-shadow:0 22px 60px #000b;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .dropwrap:hover .dropdown,.dropwrap:focus-within .dropdown,.dropwrap.open .dropdown{display:grid}
 .dropdown:before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.page-body{min-height:62vh;padding:24px 0 48px}
+.body-intro{margin:0 auto 18px;padding:16px 20px;border:1px solid var(--line);border-radius:12px;background:#121a27}
+.body-intro h2{margin:0 0 4px;color:var(--gold2);font:700 1.35rem Georgia,serif}
+.body-intro p{margin:0;color:var(--muted);font-size:.9rem}
+.embed-view{width:min(1400px,calc(100% - 28px));margin:0 auto}
+.embed-view[hidden]{display:none}
+.embed-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;padding:12px 15px;border:1px solid var(--line);border-radius:10px;background:#141d2b}
+.embed-toolbar strong{display:block;color:var(--gold2)}
+.embed-toolbar span{display:block;color:var(--muted);font-size:.78rem}
+.embed-toolbar button{border:1px solid var(--line);border-radius:8px;padding:9px 12px;background:#202b3b;color:#fff;font-weight:700;cursor:pointer}
+#resourceFrame{display:block;width:100%;height:calc(100vh - 210px);min-height:620px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.embed-fallback{margin-top:10px;padding:12px;border:1px solid #9b7136;border-radius:9px;background:#2a2114;color:#f7e6c2}
+.embed-fallback a{color:#ffd77f;text-decoration:underline;font-weight:700}
 .dropcard{display:flex;gap:12px;padding:14px;border:1px solid rgba(217,173,85,.28);border-radius:11px;background:linear-gradient(145deg,#1a2433,#101722);transition:.18s}
 .dropcard:hover{transform:translateY(-2px);border-color:var(--gold);background:#202b3c}
 .ico{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border:1px solid var(--line);border-radius:11px;background:#d9ad5518;font-size:1.25rem}
 .dropcard b{display:block;color:#fff;font-size:.94rem}.dropcard small{display:block;color:var(--muted);line-height:1.4;margin-top:3px}
+.hero-banner{width:100%;margin:0;padding:0;background:#080b12;border-bottom:1px solid var(--line);line-height:0}
+.hero-banner img{display:block;width:100%;height:auto;max-height:300px;object-fit:cover;object-position:center}
 .hero{padding:54px 0 34px;text-align:center;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0b101b66,transparent)}
 .hero img{width:clamp(110px,16vw,165px);height:clamp(110px,16vw,165px);object-fit:cover;border-radius:50%;border:2px solid var(--gold);box-shadow:0 0 42px #d9ad5526}
 .eyebrow{margin:14px 0 0;color:var(--gold2);font-size:.76rem;letter-spacing:.3em;text-transform:uppercase}
@@ -71,21 +86,30 @@ footer{border-top:1px solid var(--line);padding:22px 0 34px;text-align:center;co
 </style>
 </head>
 <body>
+
+
+<div id="google_translate_element" class="translate-engine" aria-hidden="true"></div>
+
+
+
+<header class="hero-banner" id="home">
+ <img src="assets/mor-playbook-header.png" alt="MOR Mortis Imperium Alliance Playbook banner">
+</header>
 <nav class="topbar">
  <div class="wrap nav">
   <a class="brand" href="#home"><img src="assets/mor-emblem.jpg" alt="MOR emblem"><span>MOR · MORTIS IMPERIUM</span></a>
   <div class="navlinks">
-   <a class="navlink" href="#home">HOME</a>
+   <a class="navlink" href="#home" id="homeNav">HOME</a>
    <div class="dropwrap" id="usefulMenu">
     <button class="dropbutton" type="button" aria-expanded="false" aria-haspopup="true">USEFUL INFORMATION <span class="caret">▾</span></button>
     <div class="dropdown" aria-label="Useful information links">
-     <a class="dropcard" href="https://frakinator.streamlit.app/" target="_blank" rel="noopener"><span class="ico">🐻</span><span><b>Mythic Trails &amp; Bear Hunt Optimisation</b><small>Open the Frakinator tool for Bear Hunt planning and optimisation.</small></span></a>
-     <a class="dropcard" href="https://stratforge.tools/" target="_blank" rel="noopener"><span class="ico">⚔️</span><span><b>MOR Alliance Information</b><small>Alliance resources, strategy information and shared planning tools.</small></span></a>
-     <a class="dropcard" href="https://kingshotoptimizer.com/hero-gear/" target="_blank" rel="noopener"><span class="ico">🛡️</span><span><b>Hero Gear</b><small>Review and optimise your hero equipment.</small></span></a>
-     <a class="dropcard" href="https://kingshotoptimizer.com/governor-gear/" target="_blank" rel="noopener"><span class="ico">👑</span><span><b>Governor Gear</b><small>Plan and improve your Governor equipment.</small></span></a>
-     <a class="dropcard" href="https://kingshotoptimizer.com/charms/" target="_blank" rel="noopener"><span class="ico">💎</span><span><b>Charms</b><small>Check charm progression and upgrade priorities.</small></span></a>
-     <a class="dropcard" href="https://kingshotoptimizer.com/heroes/browse/" target="_blank" rel="noopener"><span class="ico">🦸</span><span><b>Hero Database</b><small>Browse heroes, skills and available information.</small></span></a>
-     <a class="dropcard" href="https://kingshotoptimizer.com/masters/" target="_blank" rel="noopener"><span class="ico">📜</span><span><b>Masters</b><small>Explore Masters information and optimisation resources.</small></span></a>
+     <a class="dropcard resource-link" href="#" data-url="https://frakinator.streamlit.app/"><span class="ico">🐻</span><span><b>Mythic Trails &amp; Bear Hunt Optimisation</b><small>Open the Frakinator tool for Bear Hunt planning and optimisation.</small></span></a>
+     <a class="dropcard resource-link" href="#" data-url="https://stratforge.tools/"><span class="ico">⚔️</span><span><b>MOR Alliance Information</b><small>Alliance resources, strategy information and shared planning tools.</small></span></a>
+     <a class="dropcard resource-link" href="#" data-url="https://kingshotoptimizer.com/hero-gear/"><span class="ico">🛡️</span><span><b>Hero Gear</b><small>Review and optimise your hero equipment.</small></span></a>
+     <a class="dropcard resource-link" href="#" data-url="https://kingshotoptimizer.com/governor-gear/"><span class="ico">👑</span><span><b>Governor Gear</b><small>Plan and improve your Governor equipment.</small></span></a>
+     <a class="dropcard resource-link" href="#" data-url="https://kingshotoptimizer.com/charms/"><span class="ico">💎</span><span><b>Charms</b><small>Check charm progression and upgrade priorities.</small></span></a>
+     <a class="dropcard resource-link" href="#" data-url="https://kingshotoptimizer.com/heroes/browse/"><span class="ico">🦸</span><span><b>Hero Database</b><small>Browse heroes, skills and available information.</small></span></a>
+     <a class="dropcard resource-link" href="#" data-url="https://kingshotoptimizer.com/masters/"><span class="ico">📜</span><span><b>Masters</b><small>Explore Masters information and optimisation resources.</small></span></a>
     </div>
    </div>
    <label class="language-picker" aria-label="Select language">
@@ -105,19 +129,13 @@ footer{border-top:1px solid var(--line);padding:22px 0 34px;text-align:center;co
   </div>
  </div>
 </nav>
-<div id="google_translate_element" class="translate-engine" aria-hidden="true"></div>
-
-<header class="hero" id="home">
- <div class="wrap">
-  <img src="assets/mor-emblem.jpg" alt="MOR Mortis Imperium dragon and reaper emblem">
-  <p class="eyebrow">Kingdom 865 · Alliance Headquarters</p>
-  <h1>MOR</h1><div class="hero-sub">Mortis Imperium</div>
-  <p class="hero-motto">Different Players. Same Purpose.</p>
-  <div class="hero-line">PEOPLE · STRATEGY · ACTION · VICTORY · TOGETHER</div>
- </div>
-</header>
-
-<main class="wrap">
+<main id="pageBody" class="page-body">
+ <section id="homeView" class="wrap">
+  <div class="body-intro">
+   <h2>Welcome to MOR</h2>
+   <p>Select a resource from <strong>Useful Information</strong> to open it here, or explore the Alliance Playbook below.</p>
+  </div>
+  
  <section class="mission">
   <h2>✥ OUR MISSION</h2>
   <p><strong>We compete, grow and win together.</strong>Our strength is not measured only by Power, but by how well we communicate, coordinate, adapt and stand together. Real life comes first. But when we commit to the Alliance, an event or each other, we should be able to count on one another.</p>
@@ -191,6 +209,19 @@ footer{border-top:1px solid var(--line);padding:22px 0 34px;text-align:center;co
   </div>
   <div class="footerline"><span>Different Players<br>Same Purpose</span><strong>MOR — MORTIS IMPERIUM</strong><span>More Than a Game</span></div>
  </section>
+
+ </section>
+ <section id="embedView" class="embed-view" hidden aria-label="Embedded resource">
+  <div class="embed-toolbar">
+   <div><strong id="embedTitle">Useful Information</strong><span id="embedHint">Loaded within the MOR Alliance Hub</span></div>
+   <button id="homeButton" type="button">← Back to Home</button>
+  </div>
+  <iframe id="resourceFrame" title="MOR resource" src="about:blank" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="fullscreen"></iframe>
+  <div id="embedFallback" class="embed-fallback" hidden>
+   This website does not allow itself to be displayed inside another website. You can still open it directly:
+   <a id="fallbackLink" href="#" target="_self">Open resource</a>
+  </div>
+ </section>
 </main>
 <footer><div class="wrap">MOR · MORTIS IMPERIUM &nbsp;|&nbsp; PEOPLE MAKE THE ALLIANCE — TOGETHER WE GO FURTHER</div></footer>
 <script>
@@ -199,14 +230,47 @@ button.addEventListener('click',()=>{const open=menu.classList.toggle('open');bu
 document.addEventListener('click',e=>{if(!menu.contains(e.target)){menu.classList.remove('open');button.setAttribute('aria-expanded','false');}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){menu.classList.remove('open');button.setAttribute('aria-expanded','false');button.focus();}});
 
-// Google Translate provides automatic page translation for the selected language.
+const homeView=document.getElementById('homeView');
+const embedView=document.getElementById('embedView');
+const frame=document.getElementById('resourceFrame');
+const embedTitle=document.getElementById('embedTitle');
+const fallback=document.getElementById('embedFallback');
+const fallbackLink=document.getElementById('fallbackLink');
+function showHome(){
+  frame.src='about:blank';
+  embedView.hidden=true;
+  homeView.hidden=false;
+  fallback.hidden=true;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function loadResource(url,title){
+  homeView.hidden=true;
+  embedView.hidden=false;
+  fallback.hidden=true;
+  embedTitle.textContent=title;
+  fallbackLink.href=url;
+  frame.src=url;
+  menu.classList.remove('open');
+  button.setAttribute('aria-expanded','false');
+  window.scrollTo({top:document.querySelector('.topbar').offsetTop,behavior:'smooth'});
+  // Browsers do not expose cross-origin frame policy errors to page JavaScript.
+  // Keep a direct same-tab fallback visible beneath the embedded frame.
+  setTimeout(()=>{fallback.hidden=false;},2200);
+}
+document.querySelectorAll('.resource-link').forEach(link=>{
+  link.addEventListener('click',e=>{
+    e.preventDefault();
+    const title=link.querySelector('b')?.textContent?.trim()||'Useful Information';
+    loadResource(link.dataset.url,title);
+  });
+});
+document.getElementById('homeNav').addEventListener('click',e=>{e.preventDefault();showHome();});
+document.getElementById('homeButton').addEventListener('click',showHome);
+
+// Google Translate language selector
 const supported=['en','de','fr','es','pt','ko','ja','zh-CN','ru'];
 function googleTranslateElementInit(){
-  new google.translate.TranslateElement({
-    pageLanguage:'en',
-    includedLanguages:supported.filter(x=>x!=='en').join(','),
-    autoDisplay:false
-  },'google_translate_element');
+  new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:supported.filter(x=>x!=='en').join(','),autoDisplay:false},'google_translate_element');
   const saved=localStorage.getItem('mor-language')||'en';
   document.getElementById('languageSelect').value=saved;
   if(saved!=='en') setTimeout(()=>applyLanguage(saved),700);
@@ -215,15 +279,9 @@ function applyLanguage(lang){
   localStorage.setItem('mor-language',lang);
   const select=document.querySelector('.goog-te-combo');
   if(select){select.value=lang;select.dispatchEvent(new Event('change'));}
-  else if(lang==='en'){
-    const cookie=document.cookie.split('; ').find(x=>x.startsWith('googtrans='));
-    if(cookie){document.cookie='googtrans=/en/en;path=/';document.cookie='googtrans=/en/en;path=/;domain='+location.hostname;}
-    location.reload();
-  } else {
-    setTimeout(()=>applyLanguage(lang),500);
-  }
+  else if(lang==='en'){location.reload();}
+  else{setTimeout(()=>applyLanguage(lang),500);}
 }
 document.getElementById('languageSelect').addEventListener('change',e=>applyLanguage(e.target.value));
 </script>
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-</body></html>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script></body></html>
