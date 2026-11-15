@@ -14,3 +14,6 @@ A static GitHub Pages website. The home page is built as real HTML/CSS (not a po
 - **HOME** jumps to the playbook home page.
 - **USEFUL INFORMATION** opens a hover dropdown on desktop and a click dropdown on mobile.
 - External links open in a new tab.
+
+## Language selector
+The navigation includes English, German, French, Spanish, Portuguese, Korean, Japanese, Chinese (Simplified), and Russian. Page translation is provided automatically by Google Translate. Visitors' language choice is saved in their browser. Machine translation can occasionally mistranslate game-specific terminology or alliance names.
